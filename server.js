@@ -3,11 +3,15 @@ const cors = require("cors");
 const server = express();
 
 //import subroutes
+const actionRoutes = require("./action");
+const projectRoutes = require("./project");
 
 server.use(express.json());
 server.use(cors());
 
 //Where to use subroutes
+server.use("/actions", actionRoutes);
+server.use("/projects", projectRoutes);
 
 //Basic GET
 server.get("/", (req, res) => {
